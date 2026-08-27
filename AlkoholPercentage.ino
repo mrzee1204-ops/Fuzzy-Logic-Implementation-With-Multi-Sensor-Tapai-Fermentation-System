@@ -30,7 +30,8 @@ void loop() {
 
   // 4. Menggunakan rumus regresi linear untuk konversi ke % v/v
   // Angka ini (20.036 dan 0.08) perlu disesuaikan dengan kalibrasi sensor Anda
-  alkohol = 20.036 * vinMQ3 + 0.08;
+  alkohol = a * vinMQ3 + b;
+  // a = slope ; b = intercept from linear regression y = ax+b
 
   // 5. Menampilkan hasil ke Serial Monitor
   Serial.print("MQ3 ADC: ");
