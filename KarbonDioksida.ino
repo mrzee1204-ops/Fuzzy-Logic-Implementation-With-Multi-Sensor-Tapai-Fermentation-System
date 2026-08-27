@@ -1,11 +1,12 @@
-// Gunakan pin ADC1 pada ESP32 (misalnya GPIO 34)
+//Use Analog Pin from Microcontroller
 const int mqPin = 34; 
 const float RL = 2000.0;
+// RL is Load Resistance 
 
-// Masukkan Nilai Ro yang didapat dari Codingan Pertama (Kalibrasi)
+// Resistance value from clean air without contamination of another gases
 const float Ro = 6000.00; 
 
-// Nilai a dan b dari perhitungan Power Regression Calculator
+// a and b value we get from Power Regression Calculator
 const float a = 110.47; 
 const float b = -2.86;  
 
