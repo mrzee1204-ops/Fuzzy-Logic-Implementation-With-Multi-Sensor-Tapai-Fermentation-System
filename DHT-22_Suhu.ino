@@ -17,13 +17,10 @@ void setup() {
   dht.begin();
 }
 void loop() {
-  // Membaca suhu dan kelembaban
   suhu = dht.readTemperature();
   kelembaban = dht.readHumidity();
 
-  // Cek apakah pembacaan gagal
   if (isnan(suhu) || isnan(kelembaban)) {
-
     Serial.println("Gagal membaca sensor DHT22");
     delay(2000);
     return;
