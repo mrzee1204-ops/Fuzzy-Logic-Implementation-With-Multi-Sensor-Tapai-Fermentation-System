@@ -2,7 +2,6 @@
 
 #define DHTPIN 4
 #define DHTTYPE DHT22
-
 DHT dht(DHTPIN, DHTTYPE);
 
 float suhu;
@@ -11,16 +10,13 @@ float kelembaban;
 void setup() {
 
   Serial.begin(115200);
-
   Serial.println("======================================");
   Serial.println(" KARAKTERISASI SENSOR DHT22 ESP32");
   Serial.println("======================================");
 
   dht.begin();
 }
-
 void loop() {
-
   // Membaca suhu dan kelembaban
   suhu = dht.readTemperature();
   kelembaban = dht.readHumidity();
