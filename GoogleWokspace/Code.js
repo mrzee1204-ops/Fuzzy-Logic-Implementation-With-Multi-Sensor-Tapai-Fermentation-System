@@ -1,4 +1,4 @@
-const SHEET_NAME = 'Fermentasi Tapai Ketan'; // harus sama persis dengan nama tab, termasuk huruf besar
+const SHEET_NAME = 'Fermentasi Tapai Ketan';
 const HEADERS = ['Timestamp', 'Waktu', 'Temperature', 'Humidity', 'Alcohol',
   'Carbondioxide', 'pH', 'Fan Duty', 'Peltier Duty', '_sample_id', '_device_id',
   '_batch_id', '_email_status', '_received_at', '_email_detail'];
@@ -89,7 +89,6 @@ function value_(v, valid, min, max) {
   return valid === true && typeof v === 'number' && Number.isFinite(v) && v >= min && v <= max ? v : '';
 }
 
-// Tab lama hanya punya 9 kolom pertama. Data lama dipertahankan; kolom 10-15 diisi setup().
 function legacyHeader_(sheet) {
   const row = sheet.getRange(1, 1, 1, 15).getValues()[0];
   return row.slice(0, 9).every((v, i) => v === HEADERS[i]) && row.slice(9).every(v => v === '');
@@ -98,8 +97,6 @@ function legacyHeader_(sheet) {
 function headersMatch_(sheet) {
   return sheet.getRange(1, 1, 1, 15).getValues()[0].every((v, i) => v === HEADERS[i]);
 }
-
-// Notifikasi dipertahankan karena firmware menunggu email_sent=true untuk event maturity.
 function sendEmail_(sheet, row, p, props) {
   const status = sheet.getRange(row, 13).getValue();
   if (status === 'SENT') return {ok: true, code: 200, email_sent: true};
