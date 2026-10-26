@@ -1,11 +1,11 @@
-int adcPin = 34;            //Pin yang dipakai untuk sensornya
+int adcPin = 34;
 float voltage, pH;
 
-float m = -6.418;           //-6.63;  ----Slope
-float b = 17.226;           //17.68;  ----Offset
-float correction = 0.00;    // ubah ini untuk tuning
+float m = -6.418;
+float b = 17.226;
+float correction = 0.00;
 
-const int numSamples = 20;  //Jumlah Sample yang diambil
+const int numSamples = 20;
 int samples[numSamples];
 int indexSample = 0;
 long total = 0;
@@ -20,7 +20,6 @@ void setup() {
     samples[i] = 0;
   }
 }
-
 void loop() {
   total = total - samples[indexSample];
   samples[indexSample] = analogRead(adcPin);
